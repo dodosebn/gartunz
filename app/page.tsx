@@ -3,7 +3,8 @@ import Head from 'next/head';
 import Header from './components/header';
 import SocialIcons from './components/socialIcons';
 import Footer from './components/footer';
-
+import Image from 'next/image';
+import GarImg from '@/public/images/gartunz.jpeg';
 
 const Home: NextPage = () => {
   return (
@@ -19,8 +20,8 @@ const Home: NextPage = () => {
 
         <main className="min-h-[80vh] flex flex-col items-center justify-center text-center relative py-12">
           <div className="relative">
-            <img
-              src="/images/gar-tunz-profile.jpg"
+            <Image
+              src={GarImg}
               alt="Gar Tunz"
               className="w-64 h-64 sm:w-72 sm:h-72 md:w-80 md:h-80 rounded-full object-cover border-4 border-accent shadow-2xl transition-transform hover:scale-105"
             />

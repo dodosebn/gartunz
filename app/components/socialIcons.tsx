@@ -37,7 +37,7 @@ const SocialIcons = () => {
   ];
 
   return (
-    <div className="flex gap-6 mt-8">
+    <div className="flex gap-6 mt-8" id='socials'>
       {socialLinks.map((link) => (
         <a
           key={link.name}
