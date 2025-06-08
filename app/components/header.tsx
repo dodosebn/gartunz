@@ -14,7 +14,7 @@ const Header = () => {
   const toggleDropdown = (item: MenuItem) => {
     setActiveDropdown(activeDropdown === item ? null : item);
   };
-
+  
   return (
     <header className="flex justify-between items-center py-4 border-b border-opacity-10 border-white">
       <Link href='#socials' passHref>
@@ -50,51 +50,34 @@ const Header = () => {
 
       {/* Mobile Menu Dropdown */}
       {isMobileMenuOpen && (
-        <div className="md:hidden fixed inset-0 bg-black bg-opacity-50 z-40">
-          <div 
-            className="absolute top-0 left-0 right-0 bg-white text-black w-full z-50 shadow-lg"
-          >
-            {/* Close button at the top */}
+        <div className="md:hidden fixed inset-0   z-40">
+          <div className="absolute top-0 left-0 right-0 bg-[rgba(0,0,0,0.8)] w-full z-50 shadow-lg min-h-screen">
+            {/* Close button at the top right */}
             <div className="flex justify-end p-4">
               <button 
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="text-2xl focus:outline-none"
+                className="text-2xl text-white focus:outline-none"
                 aria-label="Close menu"
               >
                 ✕
               </button>
             </div>
             
-            <ul className="px-4 pb-4 space-y-3">
-              {menuItems.map((item, index) => (
-                <li key={index} className="border-b border-gray-200 pb-2 last:border-b-0">
-                  <div 
-                    className="flex justify-between items-center py-2"
-                    onClick={() => item === 'MUSIC' ? toggleDropdown(item) : null}
-                  >
-                    <span className="block w-full">{item}</span>
-                    {item === 'MUSIC' && (
-                      <span className={`transition-transform ${activeDropdown === 'MUSIC' ? 'rotate-180' : ''}`}>
-                        ▼
-                      </span>
-                    )}
-                  </div>
-
-                  {item === 'MUSIC' && activeDropdown === 'MUSIC' && (
-                    <ul className="ml-4 mt-2 space-y-2">
-                      {musicSubItems.map((subItem, subIndex) => (
-                        <li 
-                          key={subIndex} 
-                          className="hover:bg-gray-100 p-2 rounded transition-colors"
-                        >
-                          {subItem}
-                        </li>
-                      ))}
-                    </ul>
-                  )}
-                </li>
-              ))}
-            </ul>
+            {/* Centered menu items */}
+            <div className="flex flex-col items-center justify-center h-[80vh] -mt-12">
+              <ul className="w-full max-w-md px-4 space-y-6">
+                {menuItems.map((item, index) => (
+                  <li key={index} className="border-b border-gray-600 pb-4 last:border-b-0">
+                    <div 
+                      className="flex justify-between items-center py-2 text-center"
+                      onClick={() => item === 'MUSIC' ? toggleDropdown(item) : null}
+                    >
+                      <span className="block w-full text-xl text-white">{item}</span>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         </div>
       )}
